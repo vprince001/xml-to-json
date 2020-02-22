@@ -9,7 +9,7 @@
 "<"                   return 'OPEN_ANG'
 ">"                   return 'CLOSE_ANG'
 "/"                   return 'SLASH'
-[A-z 0-9 !']+            return 'TEXT'
+[A-z 0-9 !']+         return 'TEXT'
 <<EOF>>               return 'EOF'
 
 /lex
@@ -46,6 +46,7 @@ NODE
     | OPENING_TAG TEXT CLOSING_TAG
     {$$ = {[Object.keys($1)[0]] : $2}}
     | OPENING_TAG NODE CLOSING_TAG
+    {$$ = {[Object.keys($1)[0]] : $2}}
     ;
 
 OPENING_TAG
